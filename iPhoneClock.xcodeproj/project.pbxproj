@@ -26,6 +26,8 @@
 		6C4E8D09298C595B004E1FAD /* SmartAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4E8CF9298C595A004E1FAD /* SmartAlarmTableViewCell.swift */; };
 		6C4E8D0A298C595B004E1FAD /* WorldTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4E8CFB298C595B004E1FAD /* WorldTime.swift */; };
 		6C4E8D0B298C595B004E1FAD /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4E8CFC298C595B004E1FAD /* Alarm.swift */; };
+		6CBB2B35298E8D170010FBCF /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBB2B34298E8D170010FBCF /* TimerData.swift */; };
+		6CBB2B37298EBB470010FBCF /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBB2B36298EBB460010FBCF /* TimerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		6C4E8CF9298C595A004E1FAD /* SmartAlarmTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		6C4E8CFB298C595B004E1FAD /* WorldTime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldTime.swift; sourceTree = "<group>"; };
 		6C4E8CFC298C595B004E1FAD /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		6CBB2B34298E8D170010FBCF /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
+		6CBB2B36298EBB460010FBCF /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 			children = (
 				6C4E8CEA298C595A004E1FAD /* WorldTimeData.swift */,
 				6C4E8CE9298C595A004E1FAD /* AlarmData.swift */,
+				6CBB2B34298E8D170010FBCF /* TimerData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -118,9 +123,9 @@
 			children = (
 				6C4E8CED298C595A004E1FAD /* WorldTimeVC.swift */,
 				6C4E8CF1298C595A004E1FAD /* AlarmVC.swift */,
-				6C4E8CEE298C595A004E1FAD /* TabBarC.swift */,
 				6C4E8CEF298C595A004E1FAD /* TimerVC.swift */,
 				6C4E8CF0298C595A004E1FAD /* StopWatchVC.swift */,
+				6C4E8CEE298C595A004E1FAD /* TabBarC.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				6C4E8CFB298C595B004E1FAD /* WorldTime.swift */,
+				6CBB2B36298EBB460010FBCF /* TimerModel.swift */,
 				6C4E8CFC298C595B004E1FAD /* Alarm.swift */,
 			);
 			path = Model;
@@ -231,6 +237,7 @@
 				6C4E8D04298C595B004E1FAD /* RegionsVC.swift in Sources */,
 				6C4E8D09298C595B004E1FAD /* SmartAlarmTableViewCell.swift in Sources */,
 				6C4E8D06298C595B004E1FAD /* RegionTableViewCell.swift in Sources */,
+				6CBB2B35298E8D170010FBCF /* TimerData.swift in Sources */,
 				6C4E8D08298C595B004E1FAD /* AlarmTableViewCell.swift in Sources */,
 				6C4E8D0B298C595B004E1FAD /* Alarm.swift in Sources */,
 				6C4E8D05298C595B004E1FAD /* SetAlarmVC.swift in Sources */,
@@ -240,6 +247,7 @@
 				6C4E8CFF298C595B004E1FAD /* WorldTimeVC.swift in Sources */,
 				6C4E8CD5298C5812004E1FAD /* AppDelegate.swift in Sources */,
 				6C4E8CD7298C5812004E1FAD /* SceneDelegate.swift in Sources */,
+				6CBB2B37298EBB470010FBCF /* TimerModel.swift in Sources */,
 				6C4E8CFE298C595B004E1FAD /* WorldTimeData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

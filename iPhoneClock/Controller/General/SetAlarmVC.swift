@@ -50,7 +50,7 @@ class SetAlarmVC: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    //пікер додаємо, але наразі він не налаштований функціонально
+    //пікер додаємо, далі в екстеншенах його налаштовуємо
     private let timePicker: UIPickerView = {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +91,7 @@ class SetAlarmVC: UIViewController {
         let model = Alarm(hours: hour, minutes: minute, isOn: false) // робимо модель з нашими створеними константами в Alarm
         
         // send alarm to alarm vc with the help of delegation
-        delegate?.getAlarm(alarm: model) //передаємо модель у делегат - тобто прописали змінну delegate? яку сворили на початку файлу вона має опуіональний тип створеного також зверху протоколу SetAlarmDelegate  - а протокол має функцію getAlarm, що приймає Alarm
+        delegate?.getAlarm(alarm: model) //передаємо модель у делегат - тобто прописали змінну delegate? яку сворили на початку файлу вона має опціональний тип створеного також зверху протоколу SetAlarmDelegate  - а протокол має функцію getAlarm, що приймає Alarm
         dismiss(animated: true) //закриваємо вьюшку в якій обираємо час і повертає нас на нашу вьюшку з Будильниками, де ми побачимо доданий новий будильник
         print("\(hour):\(minute)") //перевірка просто, що принтує ті часи, які ми обрали
     }
