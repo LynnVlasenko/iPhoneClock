@@ -27,6 +27,7 @@ class WorldTimeTableCell: UITableViewCell {
     // city lbl
     private let cityLbl: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 28)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -35,6 +36,7 @@ class WorldTimeTableCell: UITableViewCell {
     // time lbl
     private let timeLbl: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 60, weight: .thin)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -45,6 +47,7 @@ class WorldTimeTableCell: UITableViewCell {
     //оверайдимо ініт UITableViewCell(стандартна UI для комірки таблиці) і передаємо у нього функції з розмішенням UI елементів і констрейтами для них
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = .black
         // add subviews
         addSubviews()
         

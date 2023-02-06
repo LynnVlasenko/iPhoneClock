@@ -34,6 +34,7 @@ class RegionsVC: UIViewController {
     private let chooseCityLbl: UILabel = {
         let label = UILabel()
         label.text = "Обрати місто"
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -62,7 +63,7 @@ class RegionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // change bg
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .black
         
         // add subviews //Додаємо елементи UI
         addSubviews()

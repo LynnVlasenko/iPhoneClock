@@ -28,7 +28,7 @@ class AlarmVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // change bg
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .black
         // configure nav bar //передаємо вигляд нашого верхнього Navigation Bar
         configureNavBar()
         // add subviews //Додаємо елементи UI
@@ -42,8 +42,9 @@ class AlarmVC: UIViewController {
     //MARK: - viedDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        alarmTable.frame = view.bounds //додаємо і розтягуємо табличку на весь екран
+        view.backgroundColor = .black
+        alarmTable.frame = view.bounds
+        alarmTable.backgroundColor = .black//додаємо і розтягуємо табличку на весь екран
     }
     
     
@@ -56,11 +57,12 @@ class AlarmVC: UIViewController {
     //MARK: - configure NavBar
     private func configureNavBar() {
         title = "Будильник"
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .systemOrange
         
         // left button
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Корегувати", style: .done, target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Змінити", style: .done, target: self, action: nil)
         // right button
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .done, target: self, action: #selector(addAlarm))
     }
@@ -107,7 +109,7 @@ extension AlarmVC: UITableViewDelegate, UITableViewDataSource {
         
         header.textLabel?.font = UIFont.systemFont(ofSize: 22, weight: .medium) //тепер можемо змінити шрифтна більний (бо заголовки у секцій завжди дуже дрібного шрифту)
         header.textLabel?.textColor = .white //колір задаємо
-        header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 300, height: header.bounds.height) //і розтягуємо фрейм, так як він стандартно під той стандартний малешький розмір шрифта. Щоб вліз наш збільшений шрифт.
+        header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y - 5, width: 300, height: header.bounds.height) //і розтягуємо фрейм, так як він стандартно під той стандартний малешький розмір шрифта. Щоб вліз наш збільшений шрифт.
         
     }
     
@@ -146,8 +148,6 @@ extension AlarmVC: UITableViewDelegate, UITableViewDataSource {
         alarmTable.delegate = self
         alarmTable.dataSource = self
     }
-    
-    
     
     
 }

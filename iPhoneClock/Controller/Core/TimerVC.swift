@@ -176,10 +176,6 @@ class TimerVC: UIViewController {
     
     @objc func startAction() {
         
-        timerPicker.isHidden = true
-        timeLabel.isHidden = false
-        stopButton.isHidden = false
-        
         let hour = allHours[timerPicker.selectedRow(inComponent: 0)]
         let minute = allMinutes[timerPicker.selectedRow(inComponent: 1)]
         let second = allSeconds[timerPicker.selectedRow(inComponent: 2)]
@@ -188,6 +184,10 @@ class TimerVC: UIViewController {
         
         if model.hours != "0" || model.minutes != "00" || model.seconds != "00" {
             
+            timerPicker.isHidden = true
+            timeLabel.isHidden = false
+            stopButton.isHidden = false
+ 
             // send alarm to alarm vc with the help of delegation
             delegate?.getTimer(timer: model)
             
@@ -198,11 +198,21 @@ class TimerVC: UIViewController {
             }
             
             //Приведення типу значень до Int
-            let hourInt = Int(hour)
-            let minuteInt = Int(minute)
-            let secondInt = Int(second)
+//            let hourInt = Int(hour)
+//            let minuteInt = Int(minute)
+//            let secondInt = Int(second)
             
-//          timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(step), userInfo: nil, repeats: true
+//            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(step), userInfo: nil, repeats: true
+//
+//            @objc func step() {
+//                if secondInt > 0 {
+//                    secondInt -= 1
+//                    } else {
+//                        timer.invalidate()
+//                        secondInt = 10
+//                        label.text = "\(timeRemaining)"
+//                    }
+//            }
                                         
             print("\(hour):\(minute):\(second)")
             print("MyStartButton clicked")

@@ -40,11 +40,12 @@ class WorldTimeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // change bg
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .black
         
         // change title
         title = "Світовий час"
-        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]//колір не змінюється
         //title.titleTextAttributes = [.foregroundColor: UIColor.red]
         //title.foregroundColor = .white
         
@@ -66,6 +67,7 @@ class WorldTimeVC: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         worldTimeTable.frame = view.bounds //робимо по ширині екрану нашу вью з noTimeLbl, коли не обрані ще міста з часом
+        worldTimeTable.backgroundColor = .black
     }
     
     //MARK: - Add subviews

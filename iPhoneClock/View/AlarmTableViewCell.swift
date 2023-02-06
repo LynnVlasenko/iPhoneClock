@@ -39,13 +39,20 @@ class AlarmTableViewCell: UITableViewCell {
     
     //MARK: - actions
     @objc private func alarmSwitchAction() {
+        if alarmSwitch.isOn == true {
+            timeLbl.textColor = .white
+            typeLbl.textColor = .white
+        } else {
+            timeLbl.textColor = .systemGray
+            typeLbl.textColor = .systemGray
+        }
         
     }
     
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        contentView.backgroundColor = .black
         //add subviews
         addSubviews()
         //apply constraints
@@ -71,18 +78,18 @@ class AlarmTableViewCell: UITableViewCell {
         
         let timeLblConstraints = [
             timeLbl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 1),
-            timeLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10)
+            timeLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20)
         ]
         
         let typeLblConstraints = [
             typeLbl.topAnchor.constraint(equalTo: timeLbl.bottomAnchor, constant: -5),
             typeLbl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            typeLbl.leadingAnchor.constraint(equalTo: timeLbl.leadingAnchor)
+            typeLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20)
         ]
         
         let alarmSwitchConstraints = [
-            alarmSwitch.bottomAnchor.constraint(equalTo: timeLbl.bottomAnchor, constant: -15),
-            alarmSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
+            alarmSwitch.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            alarmSwitch.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ]
         
         NSLayoutConstraint.activate(timeLblConstraints)
@@ -95,6 +102,7 @@ class AlarmTableViewCell: UITableViewCell {
     //Конфіругуємо дані будильника так як ми самі обираємо дані для відображення
     public func configure(with model: Alarm) {
         timeLbl.text = "\(model.hours):\(model.minutes)"
+        typeLbl.text = "\(model.typeLbl)"
     }
     
     

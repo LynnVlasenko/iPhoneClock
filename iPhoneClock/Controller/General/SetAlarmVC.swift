@@ -19,6 +19,7 @@ class SetAlarmVC: UIViewController {
     //створюємо константи з масивами, які передаємо за допомогою сінгелтона shared, створеного в AlarmData класі
     private let allHours = AlarmData.shared.hours()
     private let allMinutes = AlarmData.shared.minutes()
+    private let alarmNames = SetAlarmTableViewCell.shared.alarmName()
     
     
     //MARK: - Delegate
@@ -46,7 +47,7 @@ class SetAlarmVC: UIViewController {
     
     private let addingLbl: UILabel = {
         let label = UILabel()
-        label.text = "Додавання"
+        label.text = "Додати"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -55,6 +56,14 @@ class SetAlarmVC: UIViewController {
         let picker = UIPickerView()
         picker.translatesAutoresizingMaskIntoConstraints = false
         return picker
+    }()
+    
+    private let setAlarmTable: UITableView = {
+        let table = UITableView()
+        table.backgroundColor = .darkGray
+        table.layer.cornerRadius = 5
+        table.register(SetAlarmTableViewCell.self, forCellReuseIdentifier: SetAlarmTableViewCell.identifier)
+        return table
     }()
     
     
@@ -69,9 +78,16 @@ class SetAlarmVC: UIViewController {
         applyConstraints()
         // apply delegates
         applyDelegates()
-
+        applyTableDelegates()
     }
     
+    
+    //MARK: - viewDidLayoutSubviews
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //setAlarmTable.frame = CGRect(x: 20, y: 300, width: 400, height: 45)
+        setAlarmTable.frame = CGRect(x: 30, y: 300, width: 370, height: 45)
+    }
     
     //MARK: - add subviews
     private func addSubviews() {
@@ -79,6 +95,7 @@ class SetAlarmVC: UIViewController {
         view.addSubview(saveBtn)
         view.addSubview(addingLbl)
         view.addSubview(timePicker)
+        view.addSubview(setAlarmTable)
     }
     
     //MARK: - Actions
@@ -86,13 +103,15 @@ class SetAlarmVC: UIViewController {
     @objc private func saveAction() {
         let hour = allHours[timePicker.selectedRow(inComponent: 0)] //створюємо константу де ми на наших годинах (масив годин де їх 24) можемо викликати метод тайм пікера.обраний рядок(selectedRow) - тобто де зараз стоїть рядок, на якому елементі, і так як елементи масива і індекси співпадають - то ми отримаємо вірне значення для нас - відповідне до значення годин
         let minute = allMinutes[timePicker.selectedRow(inComponent: 1)] //тут так само як і з годинами
+        let type = alarmNames ?? "Буди"
         
         
-        let model = Alarm(hours: hour, minutes: minute, isOn: false) // робимо модель з нашими створеними константами в Alarm
+        let model = Alarm(hours: hour, minutes: minute, typeLbl: type, isOn: false) // робимо модель з нашими створеними константами в Alarm
         
         // send alarm to alarm vc with the help of delegation
         delegate?.getAlarm(alarm: model) //передаємо модель у делегат - тобто прописали змінну delegate? яку сворили на початку файлу вона має опціональний тип створеного також зверху протоколу SetAlarmDelegate  - а протокол має функцію getAlarm, що приймає Alarm
         dismiss(animated: true) //закриваємо вьюшку в якій обираємо час і повертає нас на нашу вьюшку з Будильниками, де ми побачимо доданий новий будильник
+        print("\(type)")
         print("\(hour):\(minute)") //перевірка просто, що принтує ті часи, які ми обрали
     }
     
@@ -125,10 +144,17 @@ class SetAlarmVC: UIViewController {
             timePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ]
         
+        let setAlarmTableConstraints = [
+            setAlarmTable.topAnchor.constraint(equalTo: timePicker.bottomAnchor, constant: 20),
+            setAlarmTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            setAlarmTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ]
+        
         NSLayoutConstraint.activate(cancelBtnConstraints)
         NSLayoutConstraint.activate(addingLblConstraints)
         NSLayoutConstraint.activate(saveBtnConstraints)
         NSLayoutConstraint.activate(timePickerConstraints)
+        NSLayoutConstraint.activate(setAlarmTableConstraints)
         
     }
  
@@ -178,6 +204,37 @@ extension SetAlarmVC: UIPickerViewDelegate, UIPickerViewDataSource {
             }
             
         }
+        
+        func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+                
+                let pickerLabel = UILabel()
+                pickerLabel.textColor = #colorLiteral(red: 0.3400436762, green: 0.5161180555, blue: 1, alpha: 1) //create color with #colorLiteral() і створюється панель кольорів для вибору кольора
+                pickerLabel.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+                
+                return pickerLabel
+            }
     }
+    
+}
+
+
+extension SetAlarmVC: UITableViewDelegate, UITableViewDataSource {
+    
+    // delegates
+    private func applyTableDelegates() {
+        setAlarmTable.delegate = self
+        setAlarmTable.dataSource = self
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell  = tableView.dequeueReusableCell(withIdentifier: SetAlarmTableViewCell.identifier) as? SetAlarmTableViewCell else {
+            return UITableViewCell() }
+        return cell
+    }
+    
     
 }

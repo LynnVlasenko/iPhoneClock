@@ -15,6 +15,7 @@ class RegionTableViewCell: UITableViewCell {
     //MARK: - UI objects
     private let regionLbl: UILabel = {
         let label = UILabel()
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -23,7 +24,7 @@ class RegionTableViewCell: UITableViewCell {
     //MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        contentView.backgroundColor = .black
         // add subviews
         addSubviews()
         

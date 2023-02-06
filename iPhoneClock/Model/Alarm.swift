@@ -11,5 +11,6 @@ import Foundation
 struct Alarm {
     let hours: String
     let minutes: String
+    let typeLbl: String
     let isOn: Bool
 }

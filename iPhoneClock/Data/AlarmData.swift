@@ -33,7 +33,7 @@ class AlarmData {
     func hours() -> [String] {
         return allHours
     }
-    //метод, що повертає масив з хвилинами
+    //метод, що повертає масив з годинами
     func minutes() -> [String] {
         return allMinutes
     }
